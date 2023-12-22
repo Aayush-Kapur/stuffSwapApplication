@@ -15,6 +15,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    // TODO : tested for pre-authorization of admin access only using email-id, change it later.
     @PreAuthorize("authentication.principal.username == 'shiprakapurlko@gmail.com'")
     @PostMapping("/add-categories") //TODO : ADMIN ONLY
     public ResponseEntity<List<String>> addCategories(@RequestBody List<String> categoryList) {

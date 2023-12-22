@@ -36,6 +36,6 @@ public class RegistrationController {
     //TODO : Implement Login functionality
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginInputDTO loginInputDTO){
-        return new ResponseEntity<>("abhi dekhna padega ye" ,HttpStatus.OK);
+        return new ResponseEntity<>("Implemented later using frontend" ,HttpStatus.OK);
     }
 }
