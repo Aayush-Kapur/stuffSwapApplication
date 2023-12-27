@@ -2,6 +2,7 @@ package com.aayush.studentStuffSwap.studentStuffSwap.service;
 
 import com.aayush.studentStuffSwap.studentStuffSwap.model.TempUser;
 import com.aayush.studentStuffSwap.studentStuffSwap.repository.TempUserRepository;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class VerificationService {
     @Autowired
     private TempUserRepository tempUserRepository;
 
-    public static boolean verifyEmail(TempUser tempUser, String verificationCode) {
+    public boolean verifyEmail(TempUser tempUser, String verificationCode) {
         return Objects.equals(tempUser.getVerificationToken(), verificationCode);
     }
 }

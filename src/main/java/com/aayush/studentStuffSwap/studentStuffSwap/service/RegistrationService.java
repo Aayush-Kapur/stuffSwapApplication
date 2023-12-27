@@ -69,10 +69,10 @@ public class RegistrationService {
         TempUser tempUser = tempUserRepository.findByEmail(verificationInputDTO.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("Email not found"));
 
-        if(VerificationService.verifyEmail(tempUser, verificationInputDTO.getVerificationCode())) {
+        if(verificationService.verifyEmail(tempUser, verificationInputDTO.getVerificationCode())) {
            return completeUserRegistration(tempUser);
         }
-        return new ResponseEntity<>("otp wrong hai ji" , HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Wrong OTP, please try again" , HttpStatus.BAD_REQUEST);
     }
 
     public ResponseEntity<String> completeUserRegistration(TempUser tempUser) {
@@ -135,7 +135,7 @@ public class RegistrationService {
         return userWithEmail.isPresent() || userWithScholarNumber.isPresent();
     }
 
-    private ResponseEntity<String> userAlreadyExistsResponse() {
+    protected ResponseEntity<String> userAlreadyExistsResponse() {
         return new ResponseEntity<>("User Already Exists", HttpStatus.BAD_REQUEST);
     }
     private void sendVerificationEmail(String email, String verificationToken) {

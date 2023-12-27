@@ -34,7 +34,6 @@ public class CategoryController {
         return categoryService.removeCategory(categoryId);
     }
 
-    @PreAuthorize("authentication.principal.username == 'shiprakapurlko@gmail.com'")
     @GetMapping("/all-categories")
     public ResponseEntity<List<CategoryOutputDTO>> getCategories() {
         return categoryService.getCategories();

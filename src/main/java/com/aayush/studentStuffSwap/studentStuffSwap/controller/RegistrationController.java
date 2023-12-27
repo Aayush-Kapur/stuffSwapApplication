@@ -17,11 +17,6 @@ public class RegistrationController {
     @Autowired
     private RegistrationService registrationService;
 
-    @GetMapping("/blah")
-    public ResponseEntity<String> blah() {
-        return new ResponseEntity<>("blah blah", HttpStatus.OK);
-    }
-
     @PostMapping("/signup")
     public ResponseEntity<String> temporaryRegister(@RequestBody TempUserInputDTO tempUserInputDTO) {
         return registrationService.registerTempUser(tempUserInputDTO);

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -20,8 +20,8 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping()
-    public ResponseEntity<UserOutputDTO> getUser() {
+    @GetMapping("/{user_id}")
+    public ResponseEntity<UserOutputDTO> getUser(@PathVariable Long user_id) {
         return userService.getCurrentUser();
     }
 
