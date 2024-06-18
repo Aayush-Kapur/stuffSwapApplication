@@ -24,7 +24,9 @@ public class UserController {
 
     @GetMapping("/{user_id}")
     public ResponseEntity<UserOutputDTO> getUser(@PathVariable Long user_id) {
+        log.info("getUser API Called");
         return userService.getCurrentUser();
+
     }
 
     @PutMapping("/update")
